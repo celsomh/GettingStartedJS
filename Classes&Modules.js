@@ -108,3 +108,72 @@ n.toExponential(2);     //Devuelve '2.56e+0'
 (15).toString(2);       //Devuelve '1111'
 (4369).toString(16);    //Devuelve '1111'
 
+Math.PI;
+Math.E;
+Math.random();
+Math.pow(4, 3);
+
+Math.sin(2.31);
+Math.cos(0.94);
+
+//Dos forma de crear un Array
+var arregloLiteral = [];
+var arregloInstancia = new Array();
+
+var arreglo;
+arreglo = [1, 2, 3, 4];
+arreglo = ['Hola', 'como', 'estas'];
+arreglo = [{ propiedad: 'valor1' }, { propiedad: 'valor2' }];    //Array de objetos
+arreglo = [[2, 4], [3, 6]];  //Matriz
+arreglo = [1, true, [3, 2], 'Hola', { clave: 'valor' }];    //Array mixto
+
+arreglo[1];     //Devuelve 'true'
+arreglo.length;     //Devuelve 5
+
+arreglo = [3, 41, 13, 12, 6];
+arreglo.sort();
+arreglo.pop();
+arreglo.push(2);
+arreglo.reverse();
+
+var valor = 3;
+var template = [
+    '<li>',
+    valor,
+    '</li>'
+].join('');
+
+console.log(template);  //Devuelve: '<li>3</li>'
+
+//Obtener las raices de cada elemento
+arreglo = [2, 4, 6, 8];
+var raices = arreglo.map(Math.sqrt);
+
+var resultados = arreglo.map(function (elemento) {
+    return elemento *= 2;
+});
+//Obtener los multiplos de tres
+arreglo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var multiplosDeTres = arreglo.filter(function (elemento) {
+    return elemento % 3 == 0;
+});
+
+arreglo = [1, 2, 3, 4, 5, 6, 12, 2, 42];
+arreglo.slice(3, 7);    //[4,5,12]
+arreglo.slice(2, -1); //[3,4,5,6,12,2]
+
+'javascript'[2];    //'v'
+'javascript'.length();   //'10'
+'javascript'.charCodeAt(2);  //'118'
+'javascript'.indexOf('script'); //donde comienza el string "script", el '4'
+'javascript'.substring(4, 10);   //la parte del string comprendida entre los indices 4 y 10-1, 'script'
+
+//Dos formas de crear un String
+var stringPrimitivo = 'Una variable String de tipo primitivo';
+var stringInstancia = new String('Una variable String instancia');
+
+var fecha = new Date();
+fecha = fecha.toString();
+fecha = fecha.split(' ');
+fecha[4];   //'20:16:25'
+
