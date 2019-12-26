@@ -80,3 +80,136 @@ miContador.incrementar();
 miContador.valor(); //2
 miContador.decrementar();
 miContador.valor();//1
+
+function inventario(nombre) {
+    var _nombre = nombre;
+    var _articulos = {};
+
+    function add(nombre, cantidad) {
+        _articulos[nombre] = cantidad;
+    }
+    function borrar(nombre) {
+        delete _articulos[nombre];
+    }
+    function cantidad(nombre) {
+        return _articulos[nombre];
+    }
+    function nombre() {
+        return _nombre;
+    }
+    return {
+        add: add,
+        borrar: borrar,
+        cantidad: cantidad,
+        nombre: nombre
+    }
+}
+
+var libros = inventario('libros');
+libros.add('AngularJS', 3);
+libros.add('JavaScript', 10);
+libros.add('NodeJS', 5);
+libros.cantidad('AngularJS');   //3
+libros.cantidad('JavaScript');  //10
+libros.borrar('JavaScript');
+libros.cantidad('JavaScript');  //undefined 
+
+function Inventario(nombre) {
+    this.nombre = nombre;
+    this.articulos = [];
+
+    this.add = function (nombre, cantidad) {
+        this.articulos[nombre] = cantidad;
+    }
+    this.borrar = function (nombre) {
+        delete this.articulos[nombre];
+    }
+    this.cantidad = function (nombre) {
+        return this.articulos[nombre];
+    }
+    this.getNombre = function () {
+        return this.nombre;
+    }
+}
+
+var libros = new Inventario('Libros');
+libros.add('AngularJS', 3);
+libros.add('JavaScript', 10);
+libros.add('NodeJS', 5);
+libros.cantidad('AngularJS');   //3
+libros.cantidad('JavaScript');  //10
+libros.borrar('JavaScript');
+libros.cantidad('JavaScript');
+
+function InventarioPrototype(nombre) {
+    this.nombre = nombre;
+    this.articulos = [];
+};
+//A best way to reduce use memory so increment performance
+InventarioPrototype.prototype = {
+    add: function (nombre, cantidad) {
+        this.articulos[nombre] = cantidad;
+    },
+    borrar: function (nombre) {
+        delete this.articulos[nombre];
+    },
+    cantidad: function (nombre) {
+        return this.articulos[nombre];
+    },
+    getNombre: function () {
+        return this.nombre;
+    }
+}
+//Definición de clases en estilo ECMAScript6
+class Inventario {
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.articulos = [];
+    }
+    add(nombre, cantidad) {
+        this.articulos[nombre] = cantidad;
+    }
+    borrar(nombre) {
+        delete this.articulos[nombre];
+    }
+    cantidad(nombre) {
+        return this.articulos[nombre];
+    }
+    getNombre() {
+        return this.nombre;
+    }
+}
+var libros = new Inventario('Libros');
+libros.add('AngularJS', 3);
+libros.add('JavaScript', 10);
+libros.add('NodeJS', 5);
+
+libros.cantidad('NodeJS');  //5
+libros.cantidad('AngularJS', 3);    //3
+libros.borrar('JavaScript');
+libros.cantidad('JavaScript');  //undefined
+//Implementar herencia
+class Vehiculo {
+    constructor(tipo, nombre, ruedas) {
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.ruedas = ruedas;
+    }
+    getRuedas() {
+        return this.ruedas;
+    }
+    arrancar() {
+        console.log('Arrancando el ${this.nombre}');
+    }
+    aparcar() {
+        console.log('Aparcando el ${this.nombre}');
+    }
+}
+class Coche extends Vehiculo() {
+    constructor(nombre) {
+        super('coche', nombre, 4);
+    }
+}
+let fordFocus = new Coche('Ford Focus');
+fordFocus.getRuedas();  //4
+fordFocus.arrancar();   //'Arrancando el Ford Focus'
